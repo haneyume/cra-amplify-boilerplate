@@ -1,46 +1,73 @@
-# Getting Started with Create React App
+# cra-amplify-boilerplate
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+| Category             | Command                   |
+| -------------------- | ------------------------- |
+| Authentication       | amplify add auth          |
+| Storage              | amplify add storage       |
+| API (GraphQL)        | amplify add api           |
+| API (REST)           | amplify add api           |
+| Functions            | amplify add function      |
+| Analytics            | amplify add analytics     |
+| Notifications        | amplify add notifications |
+| Geo                  | amplify add geo           |
+| Interactions         | amplify add interactions  |
+| Predictions          | amplify add predictions   |
+| XR                   | amplify add xr            |
+| Custom AWS resources | amplify add custom        |
 
-## Available Scripts
+[Amplify Docs](https://docs.amplify.aws/)
 
-In the project directory, you can run:
+[Authorization rules](https://docs.amplify.aws/cli/graphql/authorization-rules/)
 
-### `npm start`
+[Use CDK to add custom AWS resources](https://docs.amplify.aws/cli/custom/cdk/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+amplify pull --appId <YOUR_APP_ID> --envName <YOUR_ENV_NAME>
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+amplify pull
+```
 
-### `npm test`
+```
+amplify push
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+amplify push --allow-destructive-graphql-schema-updates
+```
 
-### `npm run build`
+```
+amplify mock
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+amplify codegen models
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+amplify status api -acm Blog
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Command               | Description                                            |
+| --------------------- | ------------------------------------------------------ |
+| amplify mock          | Run mock server for supported categories               |
+| amplify mock api      | Run mock GraphQL server to simulate AppSync            |
+| amplify mock function | Locally test/invoke the function in your local backend |
+| amplify mock storage  | Run mock server to simulate S3                         |
 
-### `npm run eject`
+```graphql
+type Post @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  content: String!
+  media: AWSURL!
+}
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+type User @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  nickname: String!
+  avatar: String!
+}
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+npx envinfo --system --npmPackages react,react-dom,aws-amplify,@aws-amplify/ui-react --binaries --browsers
