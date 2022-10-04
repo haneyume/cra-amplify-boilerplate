@@ -9,9 +9,30 @@ import {
   useAuthenticator,
 } from '@aws-amplify/ui-react';
 
-import { NavBar } from '../ui-sample-components/NavBar';
+import { Header } from '../components/layouts/Header';
+import { Footer } from '../components/layouts/Footer';
+import { Sidebar } from '../components/layouts/Sidebar';
 
 export const Account = () => {
+  return (
+    <section className="my-layout">
+      <header>
+        <Header />
+      </header>
+      <nav>
+        <Sidebar />
+      </nav>
+      <main>
+        <Content />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </section>
+  );
+};
+
+const Content = () => {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
 
   useEffect(() => {
@@ -40,18 +61,5 @@ export const Account = () => {
     });
   }, []);
 
-  return (
-    <>
-      <NavBar />
-
-      <Button
-        variation="primary"
-        backgroundColor="red"
-        color="white"
-        onClick={signOut}
-      >
-        Sign Out
-      </Button>
-    </>
-  );
+  return <div />;
 };

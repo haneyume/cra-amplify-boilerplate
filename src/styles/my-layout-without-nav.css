@@ -1,0 +1,26 @@
+.my-layout-without-nav {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  grid-template-areas:
+    'header header'
+    'main main'
+    'footer footer';
+  grid-template-rows: 50px 1fr 25px;
+  grid-template-columns: 200px 1fr;
+}
+
+.my-layout-without-nav > header {
+  grid-area: header;
+  background-color: #8ca0ff;
+}
+
+.my-layout-without-nav > main {
+  grid-area: main;
+  background-color: #ffff64;
+}
+
+.my-layout-without-nav > footer {
+  grid-area: footer;
+  background-color: #8cffa0;
+}

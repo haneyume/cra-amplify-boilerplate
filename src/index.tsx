@@ -9,6 +9,8 @@ import App from './App';
 import { AppProvider, AppContext } from './contexts/AppContext';
 
 import './index.css';
+import './styles/my-layout.css';
+import './styles/my-layout-without-nav.css';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -19,7 +21,7 @@ const AppWrapper = () => {
 
   return (
     <AmplifyProvider theme={theme} colorMode="dark">
-      <App key={appCtx.language} />
+      <App />
     </AmplifyProvider>
   );
 };

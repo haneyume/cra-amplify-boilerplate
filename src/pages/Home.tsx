@@ -8,10 +8,30 @@ import moment from 'moment';
 
 import { Post } from '../models';
 
-import { NavBar } from '../ui-sample-components/NavBar';
+import { Header } from '../components/layouts/Header';
+import { Footer } from '../components/layouts/Footer';
+import { Sidebar } from '../components/layouts/Sidebar';
 
 export const Home = () => {
-  const navigate = useNavigate();
+  return (
+    <section className="my-layout">
+      <header>
+        <Header />
+      </header>
+      <nav>
+        <Sidebar />
+      </nav>
+      <main>
+        <Content />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </section>
+  );
+};
+
+const Content = () => {
   const [posts, setPosts] = useState<Post[]>([]);
 
   const fetchPosts = () => {
@@ -36,7 +56,6 @@ export const Home = () => {
     DataStore.save(
       new Post({
         content: `New title ${Date.now()}`,
-        media: 'https://picsum.photos/200/300',
       }),
     )
       .then((a) => {
@@ -53,8 +72,6 @@ export const Home = () => {
 
   return (
     <>
-      <NavBar />
-
       <Card margin={20}>
         <Flex>
           <Button onClick={onCreate}>Create</Button>
@@ -67,7 +84,6 @@ export const Home = () => {
           return (
             <Card key={index} width="22%">
               <Text>{post.id}</Text>
-              <Image src={post.media} alt="image" />
               <Text>{post.content}</Text>
               <Text>
                 {moment(post.createdAt).format('YYYY-MM-DD HH:mm:ss')}

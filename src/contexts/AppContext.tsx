@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 
-// import '../utils/i18n';
+import '../utils/i18n';
 
 interface AppContextProps {
   initialized: boolean;

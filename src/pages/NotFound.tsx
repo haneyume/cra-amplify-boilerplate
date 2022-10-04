@@ -1,19 +1,28 @@
 import { useContext, useEffect, useState, useRef } from 'react';
 
-import { View, Heading, useTheme } from '@aws-amplify/ui-react';
-
-import { NavBar } from '../ui-sample-components/NavBar';
+import { Header } from '../components/layouts/Header';
+import { Footer } from '../components/layouts/Footer';
 
 export const NotFound = () => {
-  const { tokens } = useTheme();
-
   return (
-    <>
-      <NavBar />
+    <section className="my-layout-without-nav">
+      <header>
+        <Header />
+      </header>
+      <main>
+        <Content />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </section>
+  );
+};
 
-      <View textAlign="center" padding={tokens.space.large}>
-        <Heading>404 | Not Found</Heading>
-      </View>
-    </>
+const Content = () => {
+  return (
+    <div className="w-full h-full flex justify-center items-center">
+      <h1>404 | Not Found</h1>
+    </div>
   );
 };
