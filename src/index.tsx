@@ -1,29 +1,18 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { Amplify, I18n } from 'aws-amplify';
-import {
-  AmplifyProvider,
-  defaultDarkModeOverride,
-  translations,
-} from '@aws-amplify/ui-react';
-import awsconfig from './aws-exports';
+import { AmplifyProvider } from '@aws-amplify/ui-react';
+
+import { initAws, theme } from './initAws';
 
 import App from './App';
 import { AppProvider, AppContext } from './contexts/AppContext';
 
 import './index.css';
-import '@aws-amplify/ui-react/styles.css';
 
 import reportWebVitals from './reportWebVitals';
 
-Amplify.configure(awsconfig);
-I18n.putVocabularies(translations);
-
-const theme = {
-  name: 'my-theme',
-  overrides: [defaultDarkModeOverride],
-};
+initAws();
 
 const AppWrapper = () => {
   const appCtx = useContext(AppContext);
