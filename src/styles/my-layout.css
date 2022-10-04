@@ -12,20 +12,21 @@
 
 .my-layout > header {
   grid-area: header;
-  background-color: #8ca0ff;
+  background-color: #333333;
 }
 
 .my-layout > nav {
   grid-area: nav;
-  background-color: #ffa08c;
+  background-color: #222222;
 }
 
 .my-layout > main {
   grid-area: main;
-  background-color: #ffff64;
+  background-color: #111111;
+  overflow: scroll;
 }
 
 .my-layout > footer {
   grid-area: footer;
-  background-color: #8cffa0;
+  background-color: #333333;
 }

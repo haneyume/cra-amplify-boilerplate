@@ -28,3 +28,14 @@ code {
     background-color: black;
   }
 }
+
+* {
+  color: lightgray;
+}
+
+select {
+  background-color: transparent;
+  color: lightgray;
+  border-style: none;
+  outline-style: none;
+}
