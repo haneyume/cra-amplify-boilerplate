@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { withAuthenticator } from '@aws-amplify/ui-react';
 
-import { CustomAuthComponnts } from './ui-sample-components/CustomAuthComponnts';
+import { CustomAuthComponnts } from './components/CustomAuthComponnts';
 import { Home } from './pages/Home';
+import { Notification } from './pages/Notification';
 import { Account } from './pages/Account';
 import { NotFound } from './pages/NotFound';
 
@@ -13,6 +14,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/notification" element={<Notification />} />
         <Route path="/account" element={<Account />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

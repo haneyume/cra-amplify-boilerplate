@@ -7,7 +7,7 @@ import { Header } from '../components/layouts/Header';
 import { Footer } from '../components/layouts/Footer';
 import { Sidebar } from '../components/layouts/Sidebar';
 
-export const Account = () => {
+export const Notification = () => {
   return (
     <section className="my-layout">
       <header>

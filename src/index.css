@@ -33,6 +33,11 @@ code {
   color: lightgray;
 }
 
+input {
+  border-style: none;
+  outline-style: none;
+}
+
 select {
   background-color: transparent;
   color: lightgray;

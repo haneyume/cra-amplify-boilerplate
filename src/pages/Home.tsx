@@ -2,7 +2,6 @@ import { useContext, useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { DataStore, Predicates } from 'aws-amplify';
-import { Flex, Card, Text, Image, Button } from '@aws-amplify/ui-react';
 
 import moment from 'moment';
 
@@ -59,7 +58,7 @@ const Content = () => {
       }),
     )
       .then((a) => {
-        alert(`${JSON.stringify(a)}`);
+        // alert(`${JSON.stringify(a)}`);
       })
       .catch((err) => {
         alert(err);
@@ -71,27 +70,34 @@ const Content = () => {
   };
 
   return (
-    <>
-      <Card margin={20}>
-        <Flex>
-          <Button onClick={onCreate}>Create</Button>
-          <Button onClick={onDeleteAll}>Delete All</Button>
-        </Flex>
-      </Card>
+    <div className="p-5 space-y-5">
+      <div className="flex space-x-3">
+        <input
+          className="bg-blue-500 text-white rounded px-5 cursor-pointer"
+          type="button"
+          value="Create"
+          onClick={onCreate}
+        />
 
-      <Flex margin={20} wrap="wrap">
+        <input
+          className="bg-red-500 text-white rounded px-5 cursor-pointer"
+          type="button"
+          value="Delete All"
+          onClick={onDeleteAll}
+        />
+      </div>
+
+      <div className="grid grid-cols-3 gap-3">
         {posts.map((post, index) => {
           return (
-            <Card key={index} width="22%">
-              <Text>{post.id}</Text>
-              <Text>{post.content}</Text>
-              <Text>
-                {moment(post.createdAt).format('YYYY-MM-DD HH:mm:ss')}
-              </Text>
-            </Card>
+            <div key={index} className="bg-gray-800 p-3">
+              <p>{post.id}</p>
+              <p>{post.content}</p>
+              <p>{moment(post.createdAt).format('YYYY-MM-DD HH:mm:ss')}</p>
+            </div>
           );
         })}
-      </Flex>
-    </>
+      </div>
+    </div>
   );
 };
