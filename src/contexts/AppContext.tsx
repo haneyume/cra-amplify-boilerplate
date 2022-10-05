@@ -15,9 +15,6 @@ interface AppContextProps {
   statusMessage: string;
   setStatusMessage: React.Dispatch<React.SetStateAction<string>>;
 
-  language: string;
-  setLanguage: React.Dispatch<React.SetStateAction<string>>;
-
   languages: Array<{ title: string; value: string }>;
 }
 
@@ -32,7 +29,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [tabIndex, setTabIndex] = useState<number>(0);
   const [statusMessage, setStatusMessage] = useState<string>('Ready');
-  const [language, setLanguage] = useState<string>('en');
 
   return (
     <AppContext.Provider
@@ -48,9 +44,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
         statusMessage,
         setStatusMessage,
-
-        language,
-        setLanguage,
 
         languages: [
           { title: 'English', value: 'en' },

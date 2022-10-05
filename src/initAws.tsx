@@ -21,7 +21,7 @@ export const theme = {
 export const initAws = () => {
   Amplify.configure(awsconfig);
 
-  I18n.putVocabularies(translations);
+  // I18n.putVocabularies(translations);
 
   Hub.listen(/.*/, (data) => {
     console.log('Listening for all messages: ', data.payload.data);
